@@ -84,7 +84,8 @@ public class CalculatorImpl implements Calculator{
         //回滚到上一步的情况
         operatorCh.pop();
         operatorCh.pop();
-        BigDecimal lastResult = resultHistory.pop();
+        resultHistory.pop();
+        BigDecimal lastResult = resultHistory.peek();
         result = lastResult;
         if (operatorCh.isEmpty() || resultHistory.isEmpty()){
             throw new RuntimeException("can not undo");
@@ -104,5 +105,11 @@ public class CalculatorImpl implements Calculator{
         operatorCh.push(curNum);
         resultHistory.push(lastResult);
         resultHistory.push(curResult);
+    }
+
+    @Override
+    public BigDecimal getResult() {
+        System.out.println(String.format("result is %f",result));
+        return result;
     }
 }

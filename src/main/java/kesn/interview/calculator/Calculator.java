@@ -44,4 +44,6 @@ public interface Calculator {
      */
     Calculator undo();
 
+    BigDecimal getResult();
+
 }

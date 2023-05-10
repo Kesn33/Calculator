@@ -22,6 +22,12 @@ public class Test {
         calculator.mul(BigDecimal.valueOf(7));
         calculator.div(BigDecimal.valueOf(8));
         calculator.div(BigDecimal.valueOf(100));
+        calculator.getResult();
+        calculator.undo();
+        calculator.getResult();
+        calculator.undo();
+        calculator.undo();
+        calculator.undo();
         calculator.undo();
         calculator.undo();
         calculator.undo();
@@ -36,6 +42,7 @@ public class Test {
                 calculator.sub(BigDecimal.valueOf(99));
             });
         }
+        executorService.shutdown();
 
     }
 }
