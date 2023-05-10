@@ -28,7 +28,7 @@ public class CalculatorImpl implements Calculator{
         resultHistory.push(BigDecimal.ZERO);
     }
 
-    public Calculator add(BigDecimal value) {
+    public synchronized Calculator add(BigDecimal value) {
         result = result.add(value);
         operatorCh.push("+");
         operatorCh.push(value.toString());
@@ -37,7 +37,7 @@ public class CalculatorImpl implements Calculator{
         return this;
     }
 
-    public Calculator sub(BigDecimal value) {
+    public synchronized Calculator sub(BigDecimal value) {
         result = result.subtract(value);
         operatorCh.push("-");
         operatorCh.push(value.toString());
@@ -46,7 +46,7 @@ public class CalculatorImpl implements Calculator{
         return this;
     }
 
-    public Calculator mul(BigDecimal value) {
+    public synchronized Calculator mul(BigDecimal value) {
         result = result.multiply(value);
         operatorCh.push("*");
         operatorCh.push(value.toString());
@@ -55,7 +55,7 @@ public class CalculatorImpl implements Calculator{
         return this;
     }
 
-    public Calculator div(BigDecimal value) {
+    public synchronized Calculator div(BigDecimal value) {
         if (Objects.equals(BigDecimal.ZERO,value)){
             throw new RuntimeException("除数不能为0");
         }
@@ -67,7 +67,7 @@ public class CalculatorImpl implements Calculator{
         return this;
     }
 
-    public Calculator redo() {
+    public synchronized Calculator redo() {
         System.out.println("redo");
         result = BigDecimal.ZERO;
         operatorCh = new Stack<String>();
@@ -77,7 +77,7 @@ public class CalculatorImpl implements Calculator{
     }
 
     // 撤回上一步操作
-    public Calculator undo() {
+    public synchronized Calculator undo() {
         if (operatorCh.isEmpty() || resultHistory.isEmpty()){
             throw new RuntimeException("can not undo");
         }
