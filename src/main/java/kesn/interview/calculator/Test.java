@@ -35,10 +35,10 @@ public class Test {
         calculator.div(BigDecimal.ZERO);*/
 
         //模拟一直undo
-        System.out.println("模拟一直undo----------------------");
+        /*System.out.println("模拟一直undo----------------------");
         for (int i = 0; i < 10; i ++){
             calculator.undo();
-        }
+        }*/
 
         //模拟多线程下的原子性
         System.out.println("模拟多线程下的原子性----------------------");
