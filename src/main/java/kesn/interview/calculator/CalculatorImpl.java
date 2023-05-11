@@ -87,15 +87,16 @@ public class CalculatorImpl implements Calculator{
         resultHistory.pop();
         BigDecimal lastResult = resultHistory.peek();
         result = lastResult;
-        if (operatorCh.isEmpty() || resultHistory.isEmpty()){
-            throw new RuntimeException("can not undo");
-        }
         System.out.println("undo to:");
         printOperator();
         return this;
     }
 
     private void printOperator(){
+        if (operatorCh.isEmpty()){
+            System.out.println("operator record is empty");
+            return;
+        }
         String curNum = operatorCh.pop();
         String curOperator = operatorCh.pop();
         BigDecimal curResult = resultHistory.pop();
